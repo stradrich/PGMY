@@ -104,6 +104,6 @@ Then open: http://localhost:3000
 lsof -i :3000
 
 # Kill the process (replace <PID> with the actual process ID)
-kill -9 <PID>
+kill -9 PID
 
 
