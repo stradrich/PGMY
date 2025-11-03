@@ -3,44 +3,52 @@ import { useRef, useEffect } from "react"
 import { PropertyCard } from "../components/PropertyCard"
 
 export default function PropertyGrid() {
-  const { currentProperties, hasMore, loadMoreProperties, isLoadingMore, loading, error,  } = usePropertyContext()
+  const { currentProperties, hasMore, loadMoreProperties, isLoadingMore, loading, error } = usePropertyContext()
   const observerTarget = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!observerTarget.current) return
+    const target = observerTarget.current
+    if (!target) return
+
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) loadMoreProperties()
+        const [entry] = entries
+        if (entry.isIntersecting && hasMore && !isLoadingMore) {
+          loadMoreProperties()
+        }
       },
-      { threshold: 0.1 }
+      { threshold: 0.5 }
     )
-    observer.observe(observerTarget.current)
-    return () => observer.disconnect()
-  }, [loadMoreProperties])
+
+    observer.observe(target)
+    return () => {
+      if (target) observer.unobserve(target)
+    }
+  }, [hasMore, isLoadingMore, loadMoreProperties])
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>{error}</p>
   if (currentProperties.length === 0) return <p>No properties found</p>
 
-return (
-  <>
-    <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-      {currentProperties.map((property, index) => (
-        <PropertyCard key={`${property.id}-${index}`} property={property} />
-      ))}
-    </div>
-
-    {hasMore ? (
-      <div ref={observerTarget} className="mt-8 text-center text-gray-600">
-        {isLoadingMore ? "Loading more properties..." : "Scroll for more results"}
+  return (
+    <>
+      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {currentProperties.map((property, index) => (
+          <PropertyCard key={`${property.id}-${index}`} property={property} />
+        ))}
       </div>
-    ) : (
-      currentProperties.length > 12 && (
+
+      {hasMore && (
+        <div ref={observerTarget} className="mt-8 text-center text-gray-600">
+          {isLoadingMore ? "Loading more properties..." : "Scroll for more results"}
+        </div>
+      )}
+
+      {!hasMore && currentProperties.length > 12 && (
         <div className="mt-8 text-center text-sm text-gray-600">
           You've reached the end of the results
         </div>
-      )
-    )}
-  </>
-)
+      )}
+    </>
+  )
 }
