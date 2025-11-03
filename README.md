@@ -1,3 +1,7 @@
+## GENERAL APP FLOW 
+
+[Watch the video on YouTube](https://youtu.be/r5N7Nv2SkNA)
+
 # Property Genie
 
 A **property listing search results page** built with **Next.js (Page Router)**.  
