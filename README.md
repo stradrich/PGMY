@@ -38,7 +38,6 @@ This project demonstrates your ability to create a responsive, functional proper
 | State Management | React Context API |
 | API Handling | Custom React Hook (useFetchProperties) |
 
----
 
 ## 📁 Folder Structure
 
@@ -81,7 +80,6 @@ This project demonstrates your ability to create a responsive, functional proper
 └── utils/
     ├── filterProperties.ts
     └── formatPrice.ts
----
 
 ## Core Functionality
 
