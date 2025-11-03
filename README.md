@@ -41,6 +41,7 @@ This project demonstrates your ability to create a responsive, functional proper
 
 ## 📁 Folder Structure
 
+```
 /Users/drichintoshed/Desktop/property-genie/
 ├── .gitignore
 ├─] .next/ (ignored)
@@ -80,6 +81,7 @@ This project demonstrates your ability to create a responsive, functional proper
 └── utils/
     ├── filterProperties.ts
     └── formatPrice.ts
+```
 
 ## Core Functionality
 
