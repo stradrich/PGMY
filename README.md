@@ -1,6 +1,6 @@
 ## GENERAL APP FLOW 
 
-[Watch the video on YouTube](https://youtu.be/r5N7Nv2SkNA)
+[![Watch the video on YouTube](https://img.youtube.com/vi/r5N7Nv2SkNA/0.jpg)](https://youtu.be/r5N7Nv2SkNA)
 
 # Property Genie
 
