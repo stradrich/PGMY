@@ -1,40 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Property Genie
+
+A **property listing search results page** built with **Next.js (Page Router)**.  
+This project demonstrates your ability to create a responsive, functional property marketplace interface with **API integration**, **search and filters**, and **infinite scrolling**.
+
+---
+
+## Features
+
+### Search & Filtering
+- Search by **city** or **state**
+- Filter by **price range**
+- Select **multiple property types**
+
+### Sorting
+- Default (earliest created date)
+- Price (low → high)
+- Price (high → low)
+
+### Property Display
+- Property cards showing key information
+- **Infinite scroll** to load more properties dynamically
+- **Responsive layout** across all devices
+
+### API Integration
+- Fetches property data from the provided API
+- Handles **loading**, **empty state**, and **error** conditions gracefully
+
+---
+
+## Tech Stack
+
+| Category | Tools |
+|-----------|--------|
+| Framework | Next.js (Page Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| State Management | React Context API |
+| API Handling | Custom React Hook (useFetchProperties) |
+
+---
+
+## 📁 Folder Structure
+
+/Users/drichintoshed/Desktop/property-genie/
+├── .gitignore
+├─] .next/ (ignored)
+├── README.md
+├── components/
+│   ├── Header.tsx
+│   ├── PropertyCard.tsx
+│   ├── PropertyGrid.tsx
+│   ├── SearchFilters.tsx
+│   └── Sidebar.tsx
+├── context/
+│   └── PropertyContext.tsx
+├── data/
+│   └── mockProperties.ts
+├── eslint.config.mjs
+├── hooks/
+│   └── useFetchProperties.tsx
+├─] next-env.d.ts (ignored)
+├── next.config.ts
+├─] node_modules/ (ignored)
+├── package-lock.json
+├── package.json
+├── pages/
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   ├── api/
+│   │   └── hello.ts
+│   └── index.tsx
+├── postcss.config.js
+├── public/
+├── styles/
+│   └── globals.css
+├── tailwind.config.js
+├── tsconfig.json
+├── types/
+│   └── types.ts
+└── utils/
+    ├── filterProperties.ts
+    └── formatPrice.ts
+---
+
+## Core Functionality
+
+- **PropertyContext** manages state, filters, pagination, and API data  
+- **Infinite Scrolling** implemented using `IntersectionObserver` in `PropertyGrid.tsx`  
+- **Responsive UI** built with TailwindCSS  
+- **Error Handling** and placeholder images for broken or missing property photos or unaccessible photos
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
+zsh terminal
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open: http://localhost:3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# Check which process is using port 3000
+lsof -i :3000
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Kill the process (replace <PID> with the actual process ID)
+kill -9 <PID>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
